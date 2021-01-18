@@ -1,0 +1,40 @@
+@page "/fetchdata"
+@inject HttpClient Http
+
+<h1>Dutch Municipalities</h1>
+
+<p>This component demonstrates fetching data from the server.</p>
+
+@if (municipalities == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Municipality name</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var municipality in municipalities)
+            {
+                <tr>
+                    <td>@municipality</td>
+                    <td><a href="/details/@municipality">Details</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private string[] municipalities;
+
+    protected override async Task OnInitializedAsync()
+    {
+        municipalities = await Http.GetFromJsonAsync<string[]>("http://localhost:7071/api/municipalities");
+    }
+}

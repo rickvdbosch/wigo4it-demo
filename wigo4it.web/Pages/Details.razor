@@ -1,0 +1,39 @@
+﻿@page "/details/{Municipality}"
+@inject HttpClient Http
+
+@if (municipalityEntity == null)
+{ 
+    <p><em>Loading...</em></p>
+}
+else
+{
+	<h3>@municipalityEntity.Name details</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Province</th>
+                <th>Inhabitants</th>
+                <th>Nickname</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@municipalityEntity.Province</td>
+                <td>@municipalityEntity.Inhabitants</td>
+                <td>@municipalityEntity.Nickname</td>
+            </tr>
+        </tbody>
+    </table>
+}
+
+@code {
+    [Parameter]
+    public string Municipality { get; set; }
+
+    private MunicipalityEntity municipalityEntity;
+
+    protected override async Task OnInitializedAsync()
+    {
+        municipalityEntity = await Http.GetFromJsonAsync<MunicipalityEntity>("http://localhost:7071/api/municipalities/" + HttpUtility.HtmlEncode(Municipality));
+    }
+}
