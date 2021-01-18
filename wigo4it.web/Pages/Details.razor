@@ -19,7 +19,7 @@ else
         <tbody>
             <tr>
                 <td>@municipalityEntity.Province</td>
-                <td>@municipalityEntity.Inhabitants</td>
+                <td>@municipalityEntity.Inhabitants.ToString("#,#", new CultureInfo("nl-NL"))</td>
                 <td>@municipalityEntity.Nickname</td>
             </tr>
         </tbody>
