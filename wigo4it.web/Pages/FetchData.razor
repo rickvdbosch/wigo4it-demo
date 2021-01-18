@@ -35,6 +35,6 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        municipalities = await Http.GetFromJsonAsync<string[]>("http://localhost:7071/api/municipalities");
+        municipalities = await Http.GetFromJsonAsync<string[]>("api/municipalities");
     }
 }
