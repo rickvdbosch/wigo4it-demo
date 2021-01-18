@@ -1,7 +1,10 @@
 ﻿@import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
 
 html, body {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: red;
+    font-size: larger;
+    font-family: 'Comic Sans MS', Helvetica, Arial, sans-serif;
+    background-color: rebeccapurple;
 }
 
 a, .btn-link {
@@ -18,6 +21,10 @@ app {
     position: relative;
     display: flex;
     flex-direction: column;
+}
+
+table {
+    color: #fff !important;
 }
 
 .top-row {
